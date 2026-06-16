@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Aptos", "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+:root {
+  color: #1a1a1a;
+  background: #fafafa;
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+}
+
+body,
+button,
+input,
+textarea,
+select,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+strong {
+  font-family: var(--font-sans) !important;
+}
+
+button,
+a {
+  transition-duration: 300ms;
+}
+
+.ease-premium-out {
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.ease-premium-in-out {
+  transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+}
