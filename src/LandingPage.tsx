@@ -137,7 +137,7 @@ function VisualMark({ type, tone }: { type: Differentiator['visual']; tone: Diff
 
   if (type === 'robotics') {
     return (
-      <div className="absolute bottom-7 right-7 grid grid-cols-3 gap-2.5 rounded-2xl border border-white/40 bg-white/60 p-4 shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
+      <div className="relative md:absolute md:bottom-7 md:right-7 mt-6 md:mt-0 self-start grid grid-cols-3 gap-2.5 rounded-2xl border border-white/40 bg-white/60 p-4 shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
         {Array.from({ length: 9 }).map((_, index) => (
           <span
             key={index}
@@ -151,7 +151,7 @@ function VisualMark({ type, tone }: { type: Differentiator['visual']; tone: Diff
 
   if (type === 'swim') {
     return (
-      <div className="absolute bottom-7 right-7 flex h-24 w-32 items-center justify-center rounded-2xl border border-white/40 bg-[#F8F9FA]/80 p-2 shadow-md backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+      <div className="relative md:absolute md:bottom-7 md:right-7 mt-6 md:mt-0 self-start flex h-24 w-32 items-center justify-center rounded-2xl border border-white/40 bg-[#F8F9FA]/80 p-2 shadow-md backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
         <svg className="h-full w-full" viewBox="0 0 180 120" fill="none" aria-hidden="true">
           <path d="M8 76C30 56 50 98 72 76C94 54 116 98 138 76C150 64 162 66 174 76" stroke={brand.blue} strokeWidth="10" strokeLinecap="round" />
           <path d="M8 100C30 80 50 122 72 100C94 78 116 122 138 100C150 88 162 90 174 100" stroke={brand.orange} strokeWidth="10" strokeLinecap="round" />
@@ -163,7 +163,7 @@ function VisualMark({ type, tone }: { type: Differentiator['visual']; tone: Diff
   if (type === 'bilingual') {
     return (
       <div
-        className="absolute bottom-7 right-7 flex h-24 w-24 items-center justify-center rounded-full border border-white/40 bg-white/60 font-sans text-3xl font-extrabold tracking-tight shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105"
+        className="relative md:absolute md:bottom-7 md:right-7 mt-6 md:mt-0 self-start flex h-24 w-24 items-center justify-center rounded-full border border-white/40 bg-white/60 font-sans text-3xl font-extrabold tracking-tight shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105"
         style={{ color }}
       >
         EN
@@ -172,7 +172,7 @@ function VisualMark({ type, tone }: { type: Differentiator['visual']; tone: Diff
   }
 
   return (
-    <div className="absolute bottom-7 right-7 h-28 w-28 rounded-full border border-white/40 bg-white/60 p-3 shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
+    <div className="relative md:absolute md:bottom-7 md:right-7 mt-6 md:mt-0 self-start h-28 w-28 rounded-full border border-white/40 bg-white/60 p-3 shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
       <div
         className="grid h-full w-full place-items-center rounded-full border font-sans text-3xl font-extrabold tracking-tight shadow-inner"
         style={{ borderColor: `${color}33`, color }}
@@ -403,7 +403,7 @@ export default function LandingPage() {
             return (
               <article
                 key={item.title}
-                className={`group relative overflow-hidden rounded-[2rem] border border-[#252525]/10 bg-white p-8 shadow-sm transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(46,168,223,0.1)] ${item.className}`}
+                className={`group relative flex flex-col overflow-hidden rounded-[2rem] border border-[#252525]/10 bg-white p-8 shadow-sm transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(46,168,223,0.1)] ${item.className}`}
               >
                 <div className="absolute inset-x-0 top-0 h-2" style={{ backgroundColor: color }} />
                 <div className={isWide ? 'md:max-w-[62%]' : ''}>
