@@ -137,11 +137,11 @@ function VisualMark({ type, tone }: { type: Differentiator['visual']; tone: Diff
 
   if (type === 'robotics') {
     return (
-      <div className="relative md:absolute md:bottom-7 md:right-7 mt-6 md:mt-0 self-start grid grid-cols-3 gap-2.5 rounded-2xl border border-white/40 bg-white/60 p-4 shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
+      <div className="md:absolute md:bottom-7 md:right-7 flex-shrink-0 grid grid-cols-3 gap-2 rounded-2xl border border-white/40 bg-white/60 p-3 shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
         {Array.from({ length: 9 }).map((_, index) => (
           <span
             key={index}
-            className="h-7 w-7 rounded-[8px] border border-white/80 shadow-md transition-transform duration-300 hover:scale-110"
+            className="h-6 w-6 rounded-[6px] border border-white/80 shadow-md"
             style={{ backgroundColor: index % 2 === 0 ? brand.blue : brand.orange }}
           />
         ))}
@@ -151,7 +151,7 @@ function VisualMark({ type, tone }: { type: Differentiator['visual']; tone: Diff
 
   if (type === 'swim') {
     return (
-      <div className="relative md:absolute md:bottom-7 md:right-7 mt-6 md:mt-0 self-start flex h-24 w-32 items-center justify-center rounded-2xl border border-white/40 bg-[#F8F9FA]/80 p-2 shadow-md backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+      <div className="md:absolute md:bottom-7 md:right-7 flex-shrink-0 flex h-20 w-28 items-center justify-center rounded-2xl border border-white/40 bg-[#F8F9FA]/80 p-2 shadow-md backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
         <svg className="h-full w-full" viewBox="0 0 180 120" fill="none" aria-hidden="true">
           <path d="M8 76C30 56 50 98 72 76C94 54 116 98 138 76C150 64 162 66 174 76" stroke={brand.blue} strokeWidth="10" strokeLinecap="round" />
           <path d="M8 100C30 80 50 122 72 100C94 78 116 122 138 100C150 88 162 90 174 100" stroke={brand.orange} strokeWidth="10" strokeLinecap="round" />
@@ -163,7 +163,7 @@ function VisualMark({ type, tone }: { type: Differentiator['visual']; tone: Diff
   if (type === 'bilingual') {
     return (
       <div
-        className="relative md:absolute md:bottom-7 md:right-7 mt-6 md:mt-0 self-start flex h-24 w-24 items-center justify-center rounded-full border border-white/40 bg-white/60 font-sans text-3xl font-extrabold tracking-tight shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105"
+        className="md:absolute md:bottom-7 md:right-7 flex-shrink-0 flex h-20 w-20 items-center justify-center rounded-full border border-white/40 bg-white/60 font-sans text-2xl font-extrabold tracking-tight shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105"
         style={{ color }}
       >
         EN
@@ -172,9 +172,9 @@ function VisualMark({ type, tone }: { type: Differentiator['visual']; tone: Diff
   }
 
   return (
-    <div className="relative md:absolute md:bottom-7 md:right-7 mt-6 md:mt-0 self-start h-28 w-28 rounded-full border border-white/40 bg-white/60 p-3 shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
+    <div className="md:absolute md:bottom-7 md:right-7 flex-shrink-0 h-20 w-20 rounded-full border border-white/40 bg-white/60 p-2.5 shadow-lg backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
       <div
-        className="grid h-full w-full place-items-center rounded-full border font-sans text-3xl font-extrabold tracking-tight shadow-inner"
+        className="grid h-full w-full place-items-center rounded-full border font-sans text-2xl font-extrabold tracking-tight shadow-inner"
         style={{ borderColor: `${color}33`, color }}
       >
         IB
@@ -403,19 +403,25 @@ export default function LandingPage() {
             return (
               <article
                 key={item.title}
-                className={`group relative flex flex-col overflow-hidden rounded-[2rem] border border-[#252525]/10 bg-white p-8 shadow-sm transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(46,168,223,0.1)] ${item.className}`}
+                className={`group relative overflow-hidden rounded-[2rem] border border-[#252525]/10 bg-white p-8 shadow-sm transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(46,168,223,0.1)] ${item.className}`}
               >
                 <div className="absolute inset-x-0 top-0 h-2" style={{ backgroundColor: color }} />
-                <div className={isWide ? 'md:max-w-[62%]' : ''}>
-                  <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em]" style={{ color }}>
-                    {item.eyebrow}
-                  </p>
-                  <h3 className="text-3xl font-black leading-tight tracking-tight text-[#17118A] md:text-4xl" style={{ textWrap: 'balance' } as React.CSSProperties}>
+                {/* En móvil: eyebrow arriba, luego fila con título+decorativo, luego descripción */}
+                <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em]" style={{ color }}>
+                  {item.eyebrow}
+                </p>
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className={`text-3xl font-black leading-tight tracking-tight text-[#17118A] md:text-4xl ${isWide ? 'md:max-w-[62%]' : ''}`} style={{ textWrap: 'balance' } as React.CSSProperties}>
                     {item.title}
                   </h3>
-                  <p className="mt-5 text-base leading-relaxed text-[#252525]/70">{item.description}</p>
+                  <div className="md:hidden flex-shrink-0">
+                    <VisualMark type={item.visual} tone={item.tone} />
+                  </div>
                 </div>
-                <VisualMark type={item.visual} tone={item.tone} />
+                <p className="mt-5 text-base leading-relaxed text-[#252525]/70 md:max-w-[62%]">{item.description}</p>
+                <div className="hidden md:block">
+                  <VisualMark type={item.visual} tone={item.tone} />
+                </div>
               </article>
             );
           })}
