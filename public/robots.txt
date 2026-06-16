@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Bloquear assets innecesarios para crawlers
+Disallow: /assets/
+
+# Sitemap
+Sitemap: https://www.inrl.edu.mx/sitemap.xml
+
+# Crawl-delay recomendado
+Crawl-delay: 10
