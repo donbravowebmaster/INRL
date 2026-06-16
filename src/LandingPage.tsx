@@ -743,7 +743,8 @@ export default function LandingPage() {
             className="group relative z-10 mx-auto mt-10 inline-flex min-h-[60px] items-center justify-center gap-3.5 rounded-full bg-[#25D366] px-8 text-base font-bold text-[#073B22] shadow-[0_10px_25px_rgba(37,211,102,0.25)] transition-[transform,box-shadow,background-color] duration-500 hover:-translate-y-1 hover:bg-[#20bf5a] hover:shadow-[0_15px_35px_rgba(37,211,102,0.35)] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
           >
             <WhatsAppIcon gradientId={waCtaGradientId} />
-            Contactar por WhatsApp Business
+            <span className="sm:hidden">Contactar por WhatsApp</span>
+            <span className="hidden sm:inline">Contactar por WhatsApp Business</span>
             <ArrowIcon className="transition-transform duration-500 group-hover:translate-x-1.5" />
           </a>
         </div>
